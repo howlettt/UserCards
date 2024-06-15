@@ -4,6 +4,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "target": "ES2020",
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "useDefineForClassFields": true,
 
     /* Bundler mode */
