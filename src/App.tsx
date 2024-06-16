@@ -3,22 +3,22 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { tss } from "tss-react/mui";
 import UserList from "./users/UserList";
 
+const useStyles = tss.create(({ theme }) => ({
+  rootContainer: {
+    padding: theme.spacing(2),
+  },
+}));
+
 export default function App() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const theme = createTheme({
-    palette: {
-      mode: prefersDarkMode ? "dark" : "light",
-    },
-  });
+  const { classes } = useStyles();
 
   return (
-    <ThemeProvider theme={theme}>
+    <div className={classes.rootContainer}>
       <CssBaseline />
       <UserList />
-    </ThemeProvider>
+    </div>
   );
 }
