@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export interface UsePagedDataProps<T> {
+  initialPage?: number;
   items: T[];
   itemsPerPage: number;
 }
@@ -15,7 +16,7 @@ export interface UsePagedData<T> {
 export default function usePagedData<T>(
   props: UsePagedDataProps<T>,
 ): UsePagedData<T> {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(props.initialPage ?? 0);
 
   const numberOfPages = Math.ceil(props.items.length / props.itemsPerPage);
   const filterdItems = props.items.slice(
